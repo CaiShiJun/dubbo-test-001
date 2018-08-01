@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tingyun.dao.MySQLMapper">
+
+    <insert id="addEmp" parameterType="com.tingyun.entity.Emp">
+		insert into tb_emp(Name,sex,age,address,email)
+		VALUES(#{name},#{sex},#{age},#{address},#{email})
+	</insert>
+
+	<delete id="deleteEmp">
+		DELETE FROM tb_emp
+		WHERE address = 'caiTest'
+	</delete>
+
+	<update id="updateEmp" parameterType="com.tingyun.entity.Emp">
+		UPDATE tb_emp e
+		SET e.address = 'caiTest' , e.age = 33
+	</update>
+
+	<select id="findAllEmp" resultType="com.tingyun.entity.Emp">
+		SELECT * from tb_emp
+	</select>
+</mapper>

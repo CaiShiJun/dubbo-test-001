@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--定义了提供方应用信息，用于计算依赖关系；在 dubbo-admin 或 dubbo-monitor 会显示这个名字，方便辨识-->
+    <dubbo:application name="demotest-provider" owner="programmer" organization="dubbox"/>
+    <!--使用 zookeeper 注册中心暴露服务，注意要先开启 zookeeper-->
+    <dubbo:registry address="zookeeper://localhost:2181"/>
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.DemoService" ref="demoService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="demoService" class="com.tingyun.service.imp.DemoServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.nosql.MemcachedService" ref="memcachedService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="memcachedService" class="com.tingyun.service.imp.MemcachedServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.nosql.MongoDBService" ref="mongoDBService" protocol="dubbo" timeout="1200000"/>
+    <!--具体实现该接口的 bean-->
+    <bean id="mongoDBService" class="com.tingyun.service.imp.MongoDBServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.nosql.RedisService" ref="redisService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="redisService" class="com.tingyun.service.imp.RedisServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.httpclient.HttpClientService" ref="httpClientService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="httpClientService" class="com.tingyun.service.imp.HttpClientServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.httpURLConnection.HttpURLConnectionService" ref="httpURLConnectionService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="httpURLConnectionService" class="com.tingyun.service.imp.HttpURLConnectionServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.ActiveMQ.ActiveMQProducterService" ref="activeMQProducterService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="activeMQProducterService" class="com.tingyun.service.imp.ActiveMQProducterServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.ActiveMQ.ActiveMQComsumerService" ref="activeMQComsumerService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="activeMQComsumerService" class="com.tingyun.service.imp.ActiveMQComsumerServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.RabbitMQ.RabbitMQProducerService" ref="rabbitMQProducerService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="rabbitMQProducerService" class="com.tingyun.service.imp.RabbitMQProducerServiceImpl"/>
+
+    <!--使用 dubbo 协议实现定义好的 api 接口-->
+    <dubbo:service interface="com.tingyun.service.RabbitMQ.RabbitMQCustomerService" ref="rabbitMQCustomerService" protocol="dubbo" />
+    <!--具体实现该接口的 bean-->
+    <bean id="rabbitMQCustomerService" class="com.tingyun.service.imp.RabbitMQCustomerServiceImpl"/>
+
+
+
+
+
+</beans>
