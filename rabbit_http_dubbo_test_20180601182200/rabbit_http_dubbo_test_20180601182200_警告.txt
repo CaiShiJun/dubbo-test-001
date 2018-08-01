@@ -1,0 +1,1 @@
+目前该工程的 rabbitMQ 地址为我的阿里云服务器上的RabbitMQ，且工程中有URL写死的情况部分，如 HTTP 访问 dubbo consumer。

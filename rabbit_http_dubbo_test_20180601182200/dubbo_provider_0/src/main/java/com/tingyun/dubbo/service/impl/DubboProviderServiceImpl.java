@@ -1,0 +1,12 @@
+package com.tingyun.dubbo.service.impl;
+
+import com.tingyun.dubbo.service.DubboProviderService;
+
+public class DubboProviderServiceImpl implements DubboProviderService {
+    @Override
+    public String dubboProviderReturnStrMethod(String name) {
+
+        System.out.println("DubboProviderServiceImpl:"+name);
+        return "--dubbo_provider_0--"+name;
+    }
+}

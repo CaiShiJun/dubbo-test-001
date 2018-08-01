@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--提供应用信息-->
+    <dubbo:application name="dubbo-provider"/>
+
+    <context:property-placeholder location="classpath:zookeeper.properties"/>
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}"/><!--transport表示传输协议-->
+
+    <!-- 使用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!--callback基于dubbo-->
+    <bean id="callbackService" class="org.github.service.impl.CallbackServiceImpl"/>
+    <dubbo:service interface="org.github.callback.CallbackService" ref="callbackService"
+                   connections="1" callbacks="1000" protocol="dubbo">
+        <dubbo:method name="addListener">
+            <dubbo:argument index="1" callback="true"/>
+            <!--<dubbo:argument type="com.demo.CallbackListener" callback="true" />-->
+        </dubbo:method>
+    </dubbo:service>
+
+</beans>

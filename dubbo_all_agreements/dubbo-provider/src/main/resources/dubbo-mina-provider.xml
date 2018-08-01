@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--提供应用信息-->
+    <dubbo:application name="dubbo-provider"/>
+
+    <context:property-placeholder location="classpath:zookeeper.properties"/>
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}"/><!--transport表示传输协议-->
+
+    <!-- 使用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol id="protocol" name="dubbo" port="20880" dispatcher="execution" threads="200"
+                    threadpool="limited" server="mina" client="mina"
+                    transporter="mina"/><!--bug（5129） 默认的server为netty-->
+
+    <!-- service实现类作为本地的一个bean -->
+    <bean id="dubboDefaultTestService" class="org.github.service.impl.DubboDefaultTestServiceImpl"/>
+
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="org.github.api.DubboDefaultTestService" ref="dubboDefaultTestService" timeout="50000"/>
+
+
+</beans>

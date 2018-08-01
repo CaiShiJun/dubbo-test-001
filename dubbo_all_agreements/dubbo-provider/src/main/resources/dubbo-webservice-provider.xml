@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--提供应用信息-->
+    <dubbo:application name="dubbo-provider"/>
+
+    <context:property-placeholder location="classpath:zookeeper.properties"/>
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}"/><!--transport表示传输协议-->
+
+    <!--设置默认协议-->
+    <!--使用webservice-->
+    <dubbo:protocol name="webservice" port="8050" server="jetty"/>
+    <dubbo:provider protocol="webservice"/>
+
+    <!-- service实现类作为本地的一个bean -->
+    <bean id="dubboDefaultTestService" class="org.github.service.impl.DubboDefaultTestServiceImpl"/>
+    <dubbo:service interface="org.github.api.DubboDefaultTestService" version="2.0.0" ref="dubboDefaultTestService" async="true"
+                   timeout="120000" retries="3" loadbalance="random" protocol="webservice"/>
+
+
+</beans>
