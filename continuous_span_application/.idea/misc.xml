@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/dubboconsumer_to_grpcconsumer_2" />
+    <file type="web" url="file://$PROJECT_DIR$/dubbop_provider_0" />
+    <file type="web" url="file://$PROJECT_DIR$/dubbop_start_point_0" />
+    <file type="web" url="file://$PROJECT_DIR$/grpc_provider_1" />
+    <file type="web" url="file://$PROJECT_DIR$/grpc_provider_dubbo_consumer_1" />
+    <file type="web" url="file://$PROJECT_DIR$/httpclient_consumer_4" />
+    <file type="web" url="file://$PROJECT_DIR$/httpclient_provider_thrift_consumer_3" />
+    <file type="web" url="file://$PROJECT_DIR$/thrift_provider_grpc_consumer_2" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/dubboconsumer_to_grpcconsumer_2/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

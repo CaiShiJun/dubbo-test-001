@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/dubboconsumer_to_grpcconsumer_2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbop_provider_0" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbop_start_point_0" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grpc_provider_1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grpc_provider_dubbo_consumer_1" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/httpclient_consumer_4" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/httpclient_provider_thrift_consumer_3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/thrift_provider_grpc_consumer_2" charset="UTF-8" />
+  </component>
+</project>
